@@ -1,6 +1,6 @@
-# Cliste website navigation
+# Airya - Intelligent Systems & AI Architecture
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+We design scalable AI systems, software architecture, and growth engines for modern enterprises. No tools, just systems that work without you.
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/tusharsharma25214-gmailcoms-projects/v0-cliste-website-navigation)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/EuYsZ6eizRg)

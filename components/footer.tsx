@@ -20,28 +20,26 @@ const footerLinks: FooterSection[] = [
   {
     label: "Product",
     links: [
-      { title: "Features", href: "/features" },
-      { title: "AI Team", href: "/ai-team" },
-      { title: "ROI Calculator", href: "/roi-calculator" },
-      { title: "Integration", href: "/integration" },
+      { title: "AI & Automation", href: "/services#ai-automation" },
+      { title: "Software Systems", href: "/services#development" },
+      { title: "Mobile Applications", href: "/services#development" },
+      { title: "Growth Infrastructure", href: "/services#marketing" },
     ],
   },
   {
     label: "Company",
     links: [
-      { title: "About Us", href: "/about" },
+      { title: "About", href: "/about" },
+      { title: "Services", href: "/services" },
+      { title: "Insights", href: "/blog" },
       { title: "Contact", href: "/contact" },
-      { title: "Privacy Policy", href: "/privacy" },
-      { title: "Terms of Service", href: "/terms" },
     ],
   },
   {
-    label: "Resources",
+    label: "Legal",
     links: [
-      { title: "Blog", href: "/blog" },
-      { title: "Case Studies", href: "/case-studies" },
-      { title: "Documentation", href: "/docs" },
-      { title: "Support", href: "/support" },
+      { title: "Privacy Policy", href: "/privacy" },
+      { title: "Terms of Service", href: "/terms" },
     ],
   },
   {
@@ -62,9 +60,9 @@ export function Footer() {
 
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
         <AnimatedContainer className="space-y-4">
-          <Image src="/images/cliste-logo.png" alt="Cliste Logo" width={64} height={64} className="size-16" />
+          <Image src="/images/logo.png" alt="Airya Logo" width={96} height={96} className="size-24" />
           <div className="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">
-            <p>© {new Date().getFullYear()} Cliste. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Airya. All rights reserved.</p>
           </div>
         </AnimatedContainer>
 
@@ -93,12 +91,11 @@ export function Footer() {
       </div>
 
       <div className="md:hidden mt-8 text-center space-y-2">
-        <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} Cliste. All rights reserved.</p>
-        <p className="text-muted-foreground text-xs">Web Development by Humexa</p>
+        <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} Airya. All rights reserved.</p>
       </div>
 
       <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
-        <p className="text-muted-foreground text-xs text-center">Web Development by Humexa</p>
+
       </div>
     </footer>
   )
@@ -114,7 +111,7 @@ function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationPr
   const shouldReduceMotion = useReducedMotion()
 
   if (shouldReduceMotion) {
-    return children
+    return <>{children}</>
   }
 
   return (

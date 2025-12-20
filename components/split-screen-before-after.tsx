@@ -102,9 +102,8 @@ export function SplitScreenBeforeAfter() {
         <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-lg">
           <div className="grid lg:grid-cols-[40%_1fr] gap-8 lg:gap-12 items-center">
             <div
-              className={`transition-all duration-1000 ease-out ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
@@ -117,18 +116,17 @@ export function SplitScreenBeforeAfter() {
             </div>
 
             <div
-              className={`transition-all duration-1000 ease-out delay-200 ${
-                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-1000 ease-out delay-200 ${sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
-                <span className="text-orange-600 font-semibold text-sm uppercase tracking-wide">Clutch by Cliste</span>
+                <span className="text-orange-600 font-semibold text-sm uppercase tracking-wide">Airya</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 lg:mb-12 text-balance">
                 <span className="text-slate-900">Never miss a lead with</span>{" "}
                 <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                  Clutch by Cliste
+                  Airya
                 </span>
               </h2>
 
@@ -187,9 +185,8 @@ export function SplitScreenBeforeAfter() {
           <div ref={whatsappSectionRef} className="mt-16 lg:mt-24 pt-16 lg:pt-24 border-t border-slate-200">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div
-                className={`transition-all duration-1000 ease-out ${
-                  whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`transition-all duration-1000 ease-out ${whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                   <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
@@ -206,7 +203,7 @@ export function SplitScreenBeforeAfter() {
                 </h2>
 
                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                  Clutch by Cliste handles all your WhatsApp, Messenger, and Instagram DM conversations automatically.
+                  Airya handles all your WhatsApp, Messenger, and Instagram DM conversations automatically.
                   Never miss a lead, even after hours or during busy times.
                 </p>
 
@@ -263,9 +260,8 @@ export function SplitScreenBeforeAfter() {
 
               {/* Phone mockups on RIGHT */}
               <div
-                className={`transition-all duration-1000 ease-out delay-200 ${
-                  whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`transition-all duration-1000 ease-out delay-200 ${whatsappInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
               >
                 <div className="relative h-[550px] lg:h-[700px] max-w-[500px] lg:max-w-none mx-auto">
                   {/* Smaller phone - NO parallax */}
@@ -422,9 +418,8 @@ export function SplitScreenBeforeAfter() {
             <div ref={voiceSectionRef} className="mt-16 lg:mt-24 pt-16 lg:pt-24 border-t border-slate-200">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div
-                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
-                    voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="relative h-[550px] lg:h-[700px] max-w-[500px] lg:max-w-none mx-auto">
                     <div
@@ -604,7 +599,7 @@ export function SplitScreenBeforeAfter() {
                           </div>
                           <div className="space-y-2 lg:space-y-3 text-[8px] sm:text-[9px] lg:text-xs">
                             <div className="bg-slate-900/50 rounded-lg p-2 border-l-2 border-orange-500">
-                              <div className="text-orange-400 font-semibold mb-0.5">Cliste</div>
+                              <div className="text-orange-400 font-semibold mb-0.5">Airya</div>
                               <div className="text-slate-300 leading-relaxed">
                                 "The Audi A4 is available. Would you like to schedule a test drive?"
                               </div>
@@ -616,7 +611,7 @@ export function SplitScreenBeforeAfter() {
                               </div>
                             </div>
                             <div className="bg-slate-900/50 rounded-lg p-2 border-l-2 border-orange-500">
-                              <div className="text-orange-400 font-semibold mb-0.5">Cliste</div>
+                              <div className="text-orange-400 font-semibold mb-0.5">Airya</div>
                               <div className="text-slate-300 leading-relaxed">
                                 "I have tomorrow at 11am, Thursday at 3pm, or Friday at 10am..."
                               </div>
@@ -628,7 +623,7 @@ export function SplitScreenBeforeAfter() {
                               </div>
                             </div>
                             <div className="bg-slate-900/50 rounded-lg p-2 border-l-2 border-orange-500">
-                              <div className="text-orange-400 font-semibold mb-0.5">Cliste</div>
+                              <div className="text-orange-400 font-semibold mb-0.5">Airya</div>
                               <div className="text-slate-300 leading-relaxed">
                                 "The Audi A4 is priced at €32,500. It's a 2023 model with 12,000km. Would you like to
                                 discuss financing options?"
@@ -676,9 +671,8 @@ export function SplitScreenBeforeAfter() {
                 </div>
 
                 <div
-                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${
-                    voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${voiceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -758,9 +752,8 @@ export function SplitScreenBeforeAfter() {
             <div ref={serviceSectionRef} className="mt-12 lg:mt-16 pt-12 lg:pt-16 border-t border-slate-200">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div
-                  className={`transition-all duration-1000 ease-out ${
-                    serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`transition-all duration-1000 ease-out ${serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -791,7 +784,7 @@ export function SplitScreenBeforeAfter() {
 
                   <p className="text-slate-600 text-lg mb-8 leading-relaxed">
                     Handle service appointments and parts inquiries automatically across all your sales channels -
-                    website, phone, and social media. Clutch By Cliste manages bookings, answers parts questions, and
+                    website, phone, and social media. Airya manages bookings, answers parts questions, and
                     processes orders seamlessly, all customized to your dealership's operations.
                   </p>
 
@@ -810,7 +803,7 @@ export function SplitScreenBeforeAfter() {
                         <h3 className="font-bold text-slate-900 text-lg">Service Bookings</h3>
                       </div>
                       <p className="text-slate-600 text-sm leading-relaxed ml-12">
-                        Clutch By Cliste automatically schedules service appointments and sends confirmations across all
+                        Airya automatically schedules service appointments and sends confirmations across all
                         channels - website, phone, and social media, customized to your workflow
                       </p>
                     </div>
@@ -869,9 +862,8 @@ export function SplitScreenBeforeAfter() {
                 </div>
 
                 <div
-                  className={`transition-all duration-1000 ease-out delay-200 ${
-                    serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`transition-all duration-1000 ease-out delay-200 ${serviceInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div
                     className="relative max-w-[500px] mx-auto lg:max-w-none overflow-hidden"
@@ -968,9 +960,8 @@ export function SplitScreenBeforeAfter() {
                 {/* Tyre Kickers Section - swapped order so chat mockup is on LEFT, text on RIGHT */}
                 <div
                   ref={tyreKickersSectionRef}
-                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${
-                    tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-2 lg:order-1 transition-all duration-1000 ease-out ${tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="relative h-[650px] overflow-hidden">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:-rotate-6 w-full max-w-[380px]">
@@ -1057,9 +1048,8 @@ export function SplitScreenBeforeAfter() {
 
                 {/* Text on RIGHT desktop, ABOVE on mobile */}
                 <div
-                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${
-                    tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-200 ${tyreKickersInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 mb-4">
                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1083,7 +1073,7 @@ export function SplitScreenBeforeAfter() {
                   </h2>
 
                   <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                    Stop wasting time on repetitive questions. Clutch By Cliste instantly answers common inquiries about
+                    Stop wasting time on repetitive questions. Airya instantly answers common inquiries about
                     NCT, mileage, trade-ins, and pricing while qualifying serious buyers - across your website widget,
                     phone calls, and social media channels, all tailored to your dealership's specific needs.
                   </p>
@@ -1103,7 +1093,7 @@ export function SplitScreenBeforeAfter() {
                         <h3 className="font-bold text-slate-900 text-lg">Instant Answers</h3>
                       </div>
                       <p className="text-slate-600 text-sm leading-relaxed ml-12">
-                        Clutch By Cliste responds to 50+ common questions about NCT, mileage, trade-ins, and pricing
+                        Airya responds to 50+ common questions about NCT, mileage, trade-ins, and pricing
                         instantly across your website, phone, and social channels
                       </p>
                     </div>
@@ -1142,7 +1132,7 @@ export function SplitScreenBeforeAfter() {
                         <h3 className="font-bold text-slate-900 text-lg">Save Time</h3>
                       </div>
                       <p className="text-slate-600 text-sm leading-relaxed ml-12">
-                        Stop answering the same questions repeatedly - let Clutch By Cliste handle the tire kickers
+                        Stop answering the same questions repeatedly - let Airya handle the tire kickers
                       </p>
                     </div>
 

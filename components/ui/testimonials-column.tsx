@@ -2,15 +2,17 @@
 import React from "react"
 import { motion } from "framer-motion"
 
-interface Testimonial {
-  text: string
-  name: string
-  role: string
+export interface Capability {
+  title: string
+  description: string
+  icon: React.ElementType
+  color: string
+  tag?: string
 }
 
 export const TestimonialsColumn = (props: {
   className?: string
-  testimonials: Testimonial[]
+  testimonials: Capability[]
   duration?: number
 }) => {
   return (
@@ -21,34 +23,45 @@ export const TestimonialsColumn = (props: {
         }}
         transition={{
           duration: props.duration || 10,
-          repeat: Number.POSITIVE_INFINITY,
+          repeat: Number.POSITIVE_INFINITY, // Ensure seamless loop
           ease: "linear",
           repeatType: "loop",
         }}
         className="flex flex-col gap-6 pb-6"
       >
-        {[
-          ...new Array(2).fill(0).map((_, index) => (
-            <React.Fragment key={index}>
-              {props.testimonials.map(({ text, name, role }, i) => (
-                <div
-                  className="p-10 rounded-3xl border border-white/20 shadow-lg bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] backdrop-blur-sm max-w-xs w-full shadow-gray-500/10"
-                  style={{
-                    boxShadow:
-                      "0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(156, 163, 175, 0.1), 0 0 20px rgba(156, 163, 175, 0.05)",
-                  }}
-                  key={i}
-                >
-                  <div className="text-gray-200 text-sm leading-relaxed">{text}</div>
-                  <div className="mt-5">
-                    <div className="font-medium tracking-tight leading-5 text-gray-100">{name}</div>
-                    <div className="leading-5 opacity-60 tracking-tight text-gray-300">{role}</div>
+        {/* We duplicate the array to create the infinite scroll effect */}
+        {[...Array(2)].map((_, groupIndex) => (
+          <React.Fragment key={groupIndex}>
+            {props.testimonials.map(({ title, description, icon: Icon, color, tag }, i) => (
+              <div
+                className={`p-6 rounded-2xl border border-white/10 shadow-lg bg-white/5 backdrop-blur-md max-w-xs w-full group hover:bg-white/10 transition-colors duration-300 relative overflow-hidden`}
+                key={`${groupIndex}-${i}`}
+              >
+                {/* Subtle Top Glow */}
+                <div className={`absolute -top-10 -right-10 w-24 h-24 bg-${color}-500/20 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity`} />
+
+                <div className="relative z-10">
+                  <div className={`w-10 h-10 rounded-lg bg-gray-800/50 flex items-center justify-center mb-4 border border-white/5 group-hover:border-${color}-500/30 transition-colors`}>
+                    <Icon className={`w-5 h-5 text-${color}-400`} />
                   </div>
+
+                  <div className="flex flex-col gap-1 mb-2">
+                    <h3 className="font-semibold text-lg text-white tracking-tight">{title}</h3>
+                    {tag && (
+                      <span className={`self-start text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full bg-${color}-500/10 text-${color}-300 border border-${color}-500/20`}>
+                        {tag}
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-sm text-gray-400 leading-relaxed font-light">
+                    {description}
+                  </p>
                 </div>
-              ))}
-            </React.Fragment>
-          )),
-        ]}
+              </div>
+            ))}
+          </React.Fragment>
+        ))}
       </motion.div>
     </div>
   )

@@ -2,6 +2,17 @@
 
 import { useEffect, useRef } from "react"
 import { TestimonialsColumn } from "@/components/ui/testimonials-column"
+import {
+  LayoutDashboard,
+  Layers,
+  Brain,
+  Bot,
+  Mic,
+  ShoppingBag,
+  Smartphone,
+  AppWindow,
+  BarChart3
+} from "lucide-react"
 
 export function TestimonialsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -30,53 +41,76 @@ export function TestimonialsSection() {
     return () => observer.disconnect()
   }, [])
 
-  const testimonials = [
+  const capabilities = [
     {
-      text: "We went from missing 70% of after-hours inquiries to capturing every single lead. Customer bookings increased 50% in the first month.",
-      name: "Mike Rodriguez",
-      role: "Business Owner",
+      title: "SaaS Platforms",
+      description: "AI-powered products, dashboards, and internal tools built for scale.",
+      icon: LayoutDashboard,
+      color: "zinc",
+      tag: "Enterprise"
     },
     {
-      text: "We spend so much less time thinking about lead response because of the instant engagement Cliste offers us.",
-      name: "Sarah Chen",
-      role: "Sales Manager",
+      title: "Full Stack Web Apps",
+      description: "Scalable, high-performance web applications using modern frameworks.",
+      icon: Layers,
+      color: "zinc",
+      tag: "Web"
     },
     {
-      text: "With Cliste, our conversion rates increased by 85% and boosted our weekend revenue by 40%.",
-      name: "Michael Torres",
-      role: "General Manager",
+      title: "Data Science & AI",
+      description: "Advanced analytics, ML models, and intelligent prediction systems.",
+      icon: Brain,
+      color: "zinc",
+      tag: "Intelligence"
     },
     {
-      text: "The AI handles customer questions 24/7, so we never miss a potential sale. Our team can focus on closing deals instead of answering basic questions.",
-      name: "Jennifer Walsh",
-      role: "Operations Director",
+      title: "Agentic AI Applications",
+      description: "Autonomous agents that handle sales, operations, and support 24/7.",
+      icon: Bot,
+      color: "zinc",
+      tag: "Automation"
     },
     {
-      text: "Customer satisfaction scores improved dramatically since implementing Cliste. Clients love the instant responses and personalized recommendations.",
-      name: "David Kim",
-      role: "Customer Experience Manager",
+      title: "Voice AI Agents",
+      description: "Human-like AI callers and receptionists that manage phone lines.",
+      icon: Mic,
+      color: "zinc",
+      tag: "Voice"
     },
     {
-      text: "Our retail store saw a 60% increase in qualified leads. The chatbot handles product inquiries perfectly while we focus on in-person customers.",
-      name: "Lisa Thompson",
-      role: "Store Manager",
+      title: "Shopify & E-commerce",
+      description: "High-conversion online stores with custom automation worklows.",
+      icon: ShoppingBag,
+      color: "zinc",
+      tag: "Commerce"
     },
     {
-      text: "Property inquiries are handled instantly now. We've closed 3x more deals since implementing Cliste's AI assistant.",
-      name: "James Wilson",
-      role: "Real Estate Broker",
+      title: "Mobile App Development",
+      description: "Native and cross-platform Android applications for global reach.",
+      icon: Smartphone,
+      color: "zinc",
+      tag: "Android"
     },
     {
-      text: "Hotel bookings increased 45% with 24/7 availability. Guests get immediate answers about amenities and availability.",
-      name: "Maria Garcia",
-      role: "Hospitality Manager",
+      title: "iOS App Development",
+      description: "Performance-focused native iOS apps with premium UX.",
+      icon: AppWindow,
+      color: "zinc",
+      tag: "iOS"
+    },
+    {
+      title: "AI Marketing Systems",
+      description: "Automated lead capture, nurturing sequences, and growth engines.",
+      icon: BarChart3,
+      color: "zinc",
+      tag: "Growth"
     },
   ]
 
   return (
-    <section id="testimonials" ref={sectionRef} className="relative pt-16 pb-16 px-4 sm:px-6 lg:px-8">
-      {/* Grid Background */}
-      <div className="absolute inset-0 opacity-10">
+    <section id="capabilities" ref={sectionRef} className="relative pt-24 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-black">
+      {/* Original Grid Background (Transparent/Black) */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div
           className="h-full w-full"
           style={{
@@ -89,40 +123,40 @@ export function TestimonialsSection() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* Header Section - Keep as user loves it */}
-        <div className="text-center mb-16 md:mb-32">
-          <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-white/60 text-sm font-medium tracking-wider uppercase mb-6">
-            <div className="w-8 h-px bg-white/30"></div>
-            Success Stories
-            <div className="w-8 h-px bg-white/30"></div>
+      <div className="relative max-w-7xl mx-auto z-10">
+        {/* Header Section */}
+        <div className="text-center mb-16 md:mb-24">
+          <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out inline-flex items-center gap-2 text-zinc-400 text-sm font-medium tracking-wider uppercase mb-6">
+            <div className="w-8 h-px bg-zinc-700"></div>
+            Our Capabilities
+            <div className="w-8 h-px bg-zinc-700"></div>
           </div>
-          <h2 className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 tracking-tight text-balance">
-            The businesses we <span className="font-medium italic">empower</span>
+          <h2 className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight">
+            Types of businesses we <span className="font-semibold text-white">empower</span>
           </h2>
-          <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Discover how leading businesses are transforming their customer engagement with AI-powered chat solutions
+          <p className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
+            End-to-end AI, product, and growth systems built for modern companies, from startups to enterprise.
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
+        {/* Capability Cards Carousel */}
         <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out relative flex justify-center items-center min-h-[600px] md:min-h-[800px] overflow-hidden">
+          {/* Edge Fades - UPDATED to match 'bg-black' */}
+          <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
+
           <div
-            className="flex gap-8 max-w-6xl"
-            style={{
-              maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-            }}
+            className="flex gap-6 lg:gap-8 max-w-6xl w-full px-4"
           >
-            <TestimonialsColumn testimonials={testimonials.slice(0, 3)} duration={15} className="flex-1" />
+            <TestimonialsColumn testimonials={capabilities.slice(0, 3)} duration={35} className="flex-1" />
             <TestimonialsColumn
-              testimonials={testimonials.slice(2, 5)}
-              duration={12}
+              testimonials={capabilities.slice(3, 6)}
+              duration={45}
               className="flex-1 hidden md:block"
             />
             <TestimonialsColumn
-              testimonials={testimonials.slice(1, 4)}
-              duration={18}
+              testimonials={capabilities.slice(6, 9)}
+              duration={40}
               className="flex-1 hidden lg:block"
             />
           </div>

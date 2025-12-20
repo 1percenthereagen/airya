@@ -5,25 +5,25 @@ import "./globals.css"
 import { PageTransition } from "@/components/page-transition"
 import { NavigationTransition } from "@/components/navigation-transition"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Dancing_Script, Caveat } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 
-const dancingScript = Dancing_Script({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dancing-script",
+  variable: "--font-inter",
   display: "swap",
 })
 
-const caveat = Caveat({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-caveat",
+  variable: "--font-space-grotesk",
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Cliste - AI Automation for Enterprise",
+  title: "Airya - Intelligent Systems & AI Architecture",
   description:
-    "Transform your business with intelligent AI automation solutions. Empower your organization to operate at the speed of thought.",
-  generator: "v0.app",
+    "We design scalable AI systems, software architecture, and growth engines for modern enterprises. No tools, just systems that work without you.",
+  keywords: ["AI Automation", "Software Architecture", "Growth Systems", "Enterprise AI", "Airya"],
 }
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`font-sans antialiased ${dancingScript.variable} ${caveat.variable}`}>
+      <body className={`font-sans antialiased ${inter.variable} ${spaceGrotesk.variable}`}>
         <Suspense fallback={null}>
           <NavigationTransition />
           <PageTransition>{children}</PageTransition>

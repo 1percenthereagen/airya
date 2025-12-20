@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { ProblemSolutionSection } from "@/components/problem-solution-section"
 import Aurora from "@/components/Aurora"
 import { FeaturesSection } from "@/components/features-section"
-import { AITeamSection } from "@/components/ai-team-section"
+import { UnifiedSystemsSection } from "@/components/unified-systems-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
@@ -19,11 +19,10 @@ export default function HomePage() {
         <div className="relative z-10">
           <GlassmorphismNav />
           <HeroSection />
-          <ProblemSolutionSection />
+          <UnifiedSystemsSection />
           <FeaturesSection />
-          <AITeamSection />
+          <ProblemSolutionSection />
           <TestimonialsSection />
-          <ROICalculatorSection />
           <CTASection />
           <Footer />
         </div>
