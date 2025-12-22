@@ -9,9 +9,19 @@ export function InteractiveTorus() {
   const mousePosition = useRef({ x: 0, y: 0 })
   const isHovering = useRef(false)
   const [isClient, setIsClient] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const isMobileRef = useRef(false)
 
   useEffect(() => {
     setIsClient(true)
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768
+      setIsMobile(mobile)
+      isMobileRef.current = mobile
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   useEffect(() => {
@@ -116,18 +126,28 @@ export function InteractiveTorus() {
       animationFrameId = requestAnimationFrame(animate)
       time += 0.015
 
-      // 1. Smoothly interpolate current mouse position towards target
-      // The 0.05 factor controls the "weight" or smoothness. Lower = heavier/slower.
-      currentMouseX += (mousePosition.current.x - currentMouseX) * 0.05
-      currentMouseY += (mousePosition.current.y - currentMouseY) * 0.05
+      const mobileMode = isMobileRef.current
 
-      // 2. Rotate entire ring based on smoothed mouse position
-      // Multipliers determine how much it tilts. 
-      mesh.rotation.x = currentMouseY * 0.5
-      mesh.rotation.y = currentMouseX * 0.5
+      if (mobileMode) {
+        // Mobile: Steady "circling" motion
+        // Removed X-axis tilt/wobble ("round movements")
+        // Just a slow, steady rotation around the Z-axis (like a wheel) and slight Y for depth
+        mesh.rotation.z += 0.002
+        mesh.rotation.y = 0.5 // Fixed subtle angle for depth
+        mesh.rotation.x = 0   // No tilting
+      } else {
+        // Desktop: Interactive mouse follow
+        // 1. Smoothly interpolate current mouse position towards target
+        currentMouseX += (mousePosition.current.x - currentMouseX) * 0.05
+        currentMouseY += (mousePosition.current.y - currentMouseY) * 0.05
 
-      // Add subtle constant "breathing" motion
-      mesh.rotation.z = time * 0.05
+        // 2. Rotate entire ring based on smoothed mouse position
+        mesh.rotation.x = currentMouseY * 0.5
+        mesh.rotation.y = currentMouseX * 0.5
+
+        // Add subtle constant "breathing" motion only on desktop
+        mesh.rotation.z = time * 0.05
+      }
 
       for (let i = 0; i < count; i++) {
         const t = i / count
@@ -152,15 +172,19 @@ export function InteractiveTorus() {
         dummy.rotateZ(wave)
 
         // 4. Interaction - Reactive "Flaring"
-        // Calculate distance from this segment to the "mouse influence point" on the ring 
-        // We use the smoothed mouse values here so the effect lags slightly behind the cursor
-        const mouseAngle = Math.atan2(currentMouseY, currentMouseX)
-        let dist = Math.abs(angle - mouseAngle)
-        if (dist > Math.PI) dist = 2 * Math.PI - dist
+        let proximity = 0
 
-        // Subtle proximity effect that travels with the focus
-        // Removed interactionStrength check so it always reacts
-        const proximity = Math.max(0, 1 - dist) * 1.5 * Math.min(1, Math.sqrt(currentMouseX ** 2 + currentMouseY ** 2) * 2)
+        if (!mobileMode) {
+          // Calculate distance from this segment to the "mouse influence point" on the ring
+          const mouseAngle = Math.atan2(currentMouseY, currentMouseX)
+          let dist = Math.abs(angle - mouseAngle)
+          if (dist > Math.PI) dist = 2 * Math.PI - dist
+
+          proximity = Math.max(0, 1 - dist) * 1.5 * Math.min(1, Math.sqrt(currentMouseX ** 2 + currentMouseY ** 2) * 2)
+        } else {
+          // Mobile: consistent subtle wave without mouse interaction
+          proximity = Math.sin(time * 2 + angle * 2) * 0.2 + 0.2
+        }
 
         dummy.rotateX(proximity * 0.3)
         dummy.scale.setScalar(1 + proximity * 0.1)
@@ -186,10 +210,31 @@ export function InteractiveTorus() {
 
     // Global mouse tracking for continuous smooth following
     const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse position to -1 to 1 based on window size
-      mousePosition.current = {
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: -(e.clientY / window.innerHeight) * 2 + 1,
+      if (isMobileRef.current) return // Disable mouse tracking on mobile
+
+      // Only track if mouse is over or near the container
+      // For simplicity, we track global but could restrict to container bounds
+      // The prompt asks for "hover on the element or a bit around of it"
+      // We'll normalize based on window but verify target is the canvas or container
+
+      const rect = containerRef.current?.getBoundingClientRect()
+      if (!rect) return
+
+      // Check if mouse is near the container (e.g. within 100px)
+      const buffer = 100
+      if (
+        e.clientX >= rect.left - buffer &&
+        e.clientX <= rect.right + buffer &&
+        e.clientY >= rect.top - buffer &&
+        e.clientY <= rect.bottom + buffer
+      ) {
+        mousePosition.current = {
+          x: (e.clientX / window.innerWidth) * 2 - 1,
+          y: -(e.clientY / window.innerHeight) * 2 + 1,
+        }
+      } else {
+        // Return to center if mouse moves away
+        mousePosition.current = { x: 0, y: 0 }
       }
     }
 
@@ -213,7 +258,7 @@ export function InteractiveTorus() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full min-h-[400px] md:min-h-[500px]"
+      className={`w-full h-full ${isMobile ? '' : 'md:min-h-[500px]'}`} // Allow explicit height on mobile, keep desktop default
       style={{ touchAction: 'none' }}
     />
   )

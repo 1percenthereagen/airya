@@ -161,6 +161,15 @@ export function AboutContent() {
                         linkedIn="https://www.linkedin.com/in/param-sharma/"
                         delay={0.5}
                     />
+
+                    {/* Prince */}
+                    <TeamMember
+                        name="Prince Dadhich"
+                        role="Social Media and PR Manager"
+                        bio="Prince manages social media strategies and public relations. With experience at top media houses in India, he builds brand narratives that resonate and scale across digital channels."
+                        linkedIn="https://www.linkedin.com/in/princedadhich/"
+                        delay={0.6}
+                    />
                 </div>
 
                 <motion.p

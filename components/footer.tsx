@@ -3,6 +3,7 @@ import type React from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 
 interface FooterLink {
@@ -36,14 +37,7 @@ const footerLinks: FooterSection[] = [
     ],
   },
   {
-    label: "Legal",
-    links: [
-      { title: "Privacy Policy", href: "/privacy" },
-      { title: "Terms of Service", href: "/terms" },
-    ],
-  },
-  {
-    label: "Social Links",
+    label: "Social",
     links: [
       { title: "Facebook", href: "#", icon: FacebookIcon },
       { title: "Instagram", href: "#", icon: InstagramIcon },
@@ -55,82 +49,58 @@ const footerLinks: FooterSection[] = [
 
 export function Footer() {
   return (
-    <footer className="md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
-      <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
+    <footer className="w-full bg-black text-white py-24 px-6 md:px-12 lg:px-24 border-t border-white/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
 
-      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-        <AnimatedContainer className="space-y-4">
-          <div className="w-32 h-32 md:w-40 md:h-40 border border-white/10 rounded-2xl overflow-hidden bg-white/5 flex items-center justify-center p-4 mb-2">
+        {/* Brand Column (Left) */}
+        <div className="md:col-span-4 flex flex-col items-start space-y-6">
+          <Link href="/" className="group block">
             <Image
               src="/images/logo.png"
               alt="Airya Logo"
-              width={160}
-              height={160}
-              className="w-full h-full object-contain"
+              width={140}
+              height={140}
+              className="object-contain group-hover:opacity-80 transition-opacity"
             />
+          </Link>
+          <p className="text-gray-400 text-sm font-light tracking-wide max-w-xs leading-relaxed">
+            Intelligent systems for scale.
+            <br />
+            Designing the future of automation and growth.
+          </p>
+          <div className="pt-4 text-xs text-gray-500 font-mono">
+            © {new Date().getFullYear()} Airya Inc.
           </div>
-          <div className="text-muted-foreground mt-8 text-sm md:mt-0 md:block hidden">
-            <p>© {new Date().getFullYear()} Airya. All rights reserved.</p>
-          </div>
-        </AnimatedContainer>
+        </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+        {/* Links Columns (Middle & Right) */}
+        <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
           {footerLinks.map((section, index) => (
-            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-              <div className="mb-10 md:mb-0">
-                <h3 className="text-xs">{section.label}</h3>
-                <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="hover:text-foreground inline-flex items-center transition-all duration-300"
-                      >
-                        {link.icon && <link.icon className="me-1 size-4" />}
+            <div key={section.label} className="flex flex-col space-y-6">
+              <h3 className="text-sm font-medium text-white/40 tracking-widest uppercase">{section.label}</h3>
+              <ul className="space-y-4">
+                {section.links.map((link) => (
+                  <li key={link.title}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200 font-light flex items-center gap-2 group"
+                    >
+                      {link.icon && (
+                        <link.icon className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-white" />
+                      )}
+                      <span className="relative">
                         {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedContainer>
+                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full opacity-50" />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-      </div>
-
-      <div className="md:hidden mt-8 text-center space-y-2">
-        <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} Airya. All rights reserved.</p>
-      </div>
-
-      <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
 
       </div>
     </footer>
-  )
-}
-
-type ViewAnimationProps = {
-  delay?: number
-  className?: ComponentProps<typeof motion.div>["className"]
-  children: ReactNode
-}
-
-function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
-  const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <>{children}</>
-  }
-
-  return (
-    <motion.div
-      initial={{ filter: "blur(4px)", translateY: -8, opacity: 0 }}
-      whileInView={{ filter: "blur(0px)", translateY: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.8 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
   )
 }
