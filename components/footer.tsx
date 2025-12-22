@@ -49,7 +49,7 @@ const footerLinks: FooterSection[] = [
 
 export function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-24 px-6 md:px-12 lg:px-24 border-t border-white/5">
+    <footer className="w-full bg-black text-white py-16 px-6 md:px-12 lg:px-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
 
         {/* Brand Column (Left) */}
