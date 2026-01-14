@@ -8,8 +8,16 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+import { BlogPreviewSection } from "@/components/blog-preview-section"
+import { getLatestBlogs } from "@/lib/blog"
 
-export default function HomePage() {
+// Enable ISR for blog data
+export const revalidate = 60
+
+export default async function HomePage() {
+  // Fetch latest blog posts server-side
+  const latestPosts = await getLatestBlogs(3)
+
   return (
     <div className="min-h-screen bg-black overflow-hidden">
       <main className="min-h-screen relative overflow-hidden">
@@ -23,6 +31,7 @@ export default function HomePage() {
           <FeaturesSection />
           <ProblemSolutionSection />
           <TestimonialsSection />
+          <BlogPreviewSection posts={latestPosts} />
           <CTASection />
           <Footer />
         </div>

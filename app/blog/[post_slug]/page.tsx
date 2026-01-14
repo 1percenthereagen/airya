@@ -1,44 +1,52 @@
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { notFound } from "next/navigation"
-import { getBlogBySlug } from "@/lib/blog"
+import { getBlogBySlug, getBlogContent } from "@/lib/blog"
 import type { Metadata } from "next"
 import styles from "./blog-content.module.css"
 
 // Revalidate every 60 seconds
 export const revalidate = 60
 
-export async function generateMetadata({ params }: { params: { post_slug: string } }): Promise<Metadata> {
-    const blog = await getBlogBySlug(params.post_slug)
+export async function generateMetadata({ params }: { params: Promise<{ post_slug: string }> }): Promise<Metadata> {
+    const { post_slug } = await params
+    const blog = await getBlogBySlug(post_slug)
     if (!blog) return {}
 
-    const title = blog.seo_title || blog.title
-    const description = blog.seo_description || blog.excerpt
+    const title = blog.meta_title || blog.title
+    const description = blog.meta_description || blog.excerpt || ''
 
     return {
         title,
         description,
         alternates: {
-            canonical: `/blog/${blog.slug}`,
+            canonical: blog.canonical_url || `/blog/${blog.slug}`,
         },
         openGraph: {
             title,
             description,
             type: 'article',
             url: `/blog/${blog.slug}`,
-            images: blog.cover_image ? [blog.cover_image] : undefined
+            images: blog.hero_image ? [blog.hero_image] : undefined
         }
     }
 }
 
-export default async function BlogPostPage({ params }: { params: { post_slug: string } }) {
-    const article = await getBlogBySlug(params.post_slug)
+export default async function BlogPostPage({ params }: { params: Promise<{ post_slug: string }> }) {
+    const { post_slug } = await params
+    const article = await getBlogBySlug(post_slug)
 
     if (!article) {
         notFound()
     }
+
+    const content = getBlogContent(article)
+    const publishDate = article.published_at
+        ? new Date(article.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+        : new Date(article.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-white/30">
@@ -54,24 +62,57 @@ export default async function BlogPostPage({ params }: { params: { post_slug: st
                 </Link>
 
                 <article>
-                    <div className="mb-12 space-y-4 border-b border-white/10 pb-12">
+                    {/* Header */}
+                    <header className="mb-12 space-y-6 border-b border-white/10 pb-12">
                         <div className="flex items-center gap-4 text-sm font-mono text-gray-500 uppercase tracking-widest">
-                            <span>{article.category || 'Opinion'}</span>
+                            <span>{article.category || 'Insight'}</span>
                             <span>•</span>
-                            <span>{new Date(article.published_at).toLocaleDateString()}</span>
+                            <span>{publishDate}</span>
+                            {article.read_time && (
+                                <>
+                                    <span>•</span>
+                                    <span>{article.read_time}</span>
+                                </>
+                            )}
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight">
                             {article.title}
                         </h1>
-                    </div>
+                        {article.author && (
+                            <p className="text-gray-500 font-light">By {article.author}</p>
+                        )}
+                        {/* Tags */}
+                        {article.tags && article.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2 pt-2">
+                                {article.tags.map((tag) => (
+                                    <span key={tag} className="text-xs font-mono text-gray-500 bg-white/5 px-3 py-1 rounded-full">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                    </header>
 
+                    {/* Hero Image */}
+                    {article.hero_image && (
+                        <div className="mb-12 aspect-[16/9] relative rounded-xl overflow-hidden bg-white/5">
+                            <Image
+                                src={article.hero_image}
+                                alt={article.title}
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                    )}
+
+                    {/* Content */}
                     <div
                         className={styles.blogContent}
-                        dangerouslySetInnerHTML={{ __html: article.content }}
+                        dangerouslySetInnerHTML={{ __html: content }}
                     />
 
                 </article>
-
 
             </main>
             <Footer />
