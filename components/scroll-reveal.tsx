@@ -12,13 +12,13 @@ interface ScrollRevealProps {
 }
 
 const itemVariants = {
-    hidden: (custom: { isMobile: boolean }) => ({
+    hidden: {
         opacity: 0,
-        y: 20,
-        scale: custom.isMobile ? 1 : 0.98,
-        rotateX: custom.isMobile ? 0 : -5
-    }),
-    visible: (custom: { isMobile: boolean, delay: number, duration: number }) => ({
+        y: 50,
+        scale: 0.9,
+        rotateX: -15
+    },
+    visible: (custom: { delay: number, duration: number, isMobile: boolean }) => ({
         opacity: 1,
         y: 0,
         scale: 1,
@@ -69,8 +69,8 @@ export function ScrollReveal({
             variants={isContainer ? containerVariants : itemVariants}
             custom={isContainer ? { staggerChildren, delay } : { delay, duration, isMobile }}
             style={{
-                transformStyle: isMobile ? "flat" : "preserve-3d",
-                perspective: isMobile ? "none" : "1000px",
+                transformStyle: "preserve-3d",
+                perspective: "1000px",
                 willChange: "transform, opacity",
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden"
