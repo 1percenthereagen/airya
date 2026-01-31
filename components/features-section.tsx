@@ -16,6 +16,9 @@ import {
   Smartphone
 } from "lucide-react"
 
+import { ScrollReveal } from "@/components/scroll-reveal"
+import { TextReveal } from "@/components/text-reveal"
+
 export function FeaturesSection() {
   return (
     <section id="features" className="relative bg-white py-24 sm:py-32 overflow-hidden">
@@ -25,38 +28,34 @@ export function FeaturesSection() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16 sm:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <ScrollReveal>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
-              Complete AI Systems for <br />
-              <span className="text-emerald-600">Growth & Scale</span>
+              <TextReveal>Complete AI Systems for</TextReveal> <br />
+              <span className="text-emerald-600 italic">Growth & Scale</span>
             </h2>
             <p className="text-lg leading-8 text-gray-600">
               We don't just build chatbots. We engineer 24/7 intelligent systems that capture leads, qualify prospects, and drive meaningful revenue.
             </p>
-          </motion.div>
+          </ScrollReveal>
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:gap-16">
 
           {/* PRIMARY: AI Sales & Support Automation */}
           <div className="space-y-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
-                <Bot className="w-6 h-6" />
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+                  <Bot className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900">AI Sales & Support</h3>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900">AI Sales & Support</h3>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <ScrollReveal staggerChildren={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {/* Card 1: 24/7 Chat Agents */}
-              <motion.div
-                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
-                whileHover={{ y: -4 }}
+              <div
+                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                   <MessageSquare className="w-24 h-24 text-emerald-600" />
@@ -79,12 +78,11 @@ export function FeaturesSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Card 2: AI Phone Receptionist */}
-              <motion.div
-                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300"
-                whileHover={{ y: -4 }}
+              <div
+                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
               >
                 <div className="h-12 w-12 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6 text-gray-700" />
@@ -102,12 +100,11 @@ export function FeaturesSection() {
                     <div className="h-full bg-emerald-500 w-2/3 animate-[pulse_1s_ease-in-out_infinite]"></div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Card 3: Smart Booking */}
-              <motion.div
-                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300"
-                whileHover={{ y: -4 }}
+              <div
+                className="group relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
               >
                 <div className="h-12 w-12 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Calendar className="w-6 h-6 text-gray-700" />
@@ -126,17 +123,16 @@ export function FeaturesSection() {
                     <div className="h-2 w-1/2 bg-emerald-100 rounded-full"></div>
                   </div>
                 </div>
-              </motion.div>
-            </div>
+              </div>
+            </ScrollReveal>
+
           </div>
 
           {/* SECONDARY: Marketing & Lead Systems */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <ScrollReveal staggerChildren={0.2} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Large Card: Lead Systems */}
-            <motion.div
-              className="rounded-3xl bg-gray-50 p-8 sm:p-10 border border-gray-100 relative overflow-hidden"
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
+            <div
+              className="rounded-3xl bg-gray-50 p-8 sm:p-10 border border-gray-100 relative overflow-hidden h-full group"
             >
               <div className="relative z-10 max-w-md">
                 <div className="p-2 inline-block rounded-lg bg-white mb-6 shadow-sm">
@@ -146,7 +142,7 @@ export function FeaturesSection() {
                 <p className="text-gray-600 mb-8">Stop chasing bad leads. Our systems automatically score, segment, and nurture prospects before they even reach your sales team.</p>
 
                 {/* Flow Diagram UI */}
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 space-y-3">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 space-y-3 group-hover:translate-y-[-5px] transition-transform duration-500">
                   <div className="flex items-center justify-between text-xs text-gray-500">
                     <span>Inbound</span>
                     <span>Qualify</span>
@@ -163,13 +159,11 @@ export function FeaturesSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Large Card: Email & Funnels */}
-            <motion.div
-              className="rounded-3xl bg-gray-50 p-8 sm:p-10 border border-gray-100 relative overflow-hidden"
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3 }}
+            <div
+              className="rounded-3xl bg-gray-50 p-8 sm:p-10 border border-gray-100 relative overflow-hidden h-full group"
             >
               <div className="relative z-10 max-w-md">
                 <div className="p-2 inline-block rounded-lg bg-white mb-6 shadow-sm">
@@ -179,7 +173,7 @@ export function FeaturesSection() {
                 <p className="text-gray-600 mb-8">Personalized email sequences and follow-ups that sound like you, running on autopilot 24/7/365.</p>
 
                 {/* Email UI Snippet */}
-                <div className="space-y-2">
+                <div className="space-y-2 group-hover:translate-y-[-5px] transition-transform duration-500">
                   <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-100 transform translate-x-4 opacity-50 scale-95"></div>
                   <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-100 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">AI</div>
@@ -191,46 +185,51 @@ export function FeaturesSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </ScrollReveal>
+
 
           {/* TERTIARY: Platform Integrations */}
-          <div className="border-t border-gray-100 pt-16">
-            <div className="text-center mb-10">
-              <h3 className="text-lg font-semibold text-gray-900">Seamless Integration Stack</h3>
-              <p className="text-sm text-gray-500 mt-2">Connecting your entire business ecosystem</p>
-            </div>
+          <ScrollReveal delay={0.3}>
+            <div className="border-t border-gray-100 pt-16">
+              <div className="text-center mb-10">
+                <h3 className="text-lg font-semibold text-gray-900">Seamless Integration Stack</h3>
+                <p className="text-sm text-gray-500 mt-2">Connecting your entire business ecosystem</p>
+              </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
-              {[
-                { icon: Database, name: "CRM Sync" },
-                { icon: Smartphone, name: "WhatsApp" },
-                { icon: Globe, name: "Websites" },
-                { icon: Filter, name: "Analytics" }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl bg-gray-50 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors cursor-default">
-                  <item.icon className="w-6 h-6 mb-2" />
-                  <span className="text-xs font-medium">{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="mt-8 text-center bg-gray-900 rounded-3xl p-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] duration-[1500ms]" />
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-6">Ready to automate your agency?</h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3.5 rounded-full bg-white text-gray-900 font-semibold hover:bg-emerald-50 transition-colors shadow-lg shadow-white/10">
-                  Build Your AI Growth System
-                </button>
-                <button className="px-8 py-3.5 rounded-full border border-gray-700 text-white hover:border-white transition-colors">
-                  See How It Works
-                </button>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+                {[
+                  { icon: Database, name: "CRM Sync" },
+                  { icon: Smartphone, name: "WhatsApp" },
+                  { icon: Globe, name: "Websites" },
+                  { icon: Filter, name: "Analytics" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl bg-gray-50 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors cursor-default">
+                    <item.icon className="w-6 h-6 mb-2" />
+                    <span className="text-xs font-medium">{item.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
+
+          {/* Bottom CTA */}
+          <ScrollReveal delay={0.4}>
+            <div className="mt-8 text-center bg-gray-900 rounded-3xl p-12 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat transition-[background-position_0s_ease] hover:bg-[position:200%_0,0_0] duration-[1500ms]" />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-white mb-6">Ready to automate your agency?</h3>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button className="px-8 py-3.5 rounded-full bg-white text-gray-900 font-semibold hover:bg-emerald-50 transition-colors shadow-lg shadow-white/10">
+                    Build Your AI Growth System
+                  </button>
+                  <button className="px-8 py-3.5 rounded-full border border-gray-700 text-white hover:border-white transition-colors">
+                    See How It Works
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
 
         </div>
       </div>

@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { ScrollReveal } from "@/components/scroll-reveal"
+import { TextReveal } from "@/components/text-reveal"
 import {
     Cpu,
     Code2,
@@ -228,6 +230,10 @@ function GrowthSystemCard() {
     )
 }
 
+
+
+// ... (imports remain the same, removing unused framer-motion imports if possible, but keeping them if used inside cards)
+
 export function UnifiedSystemsSection() {
     const containerRef = useRef(null)
 
@@ -238,58 +244,26 @@ export function UnifiedSystemsSection() {
 
             <div className="max-w-7xl mx-auto px-6">
                 <div className="max-w-3xl mb-24">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
+                    <ScrollReveal>
                         <h2 className="text-sm font-mono uppercase tracking-[0.3em] text-zinc-500 mb-6">Expertise Domains</h2>
-                        <p className="text-4xl md:text-5xl font-light text-white font-headings tracking-tight leading-[1.1] mb-8">
-                            We design infrastructure <br />
+                        <div className="text-4xl md:text-5xl font-light text-white font-headings tracking-tight leading-[1.1] mb-8">
+                            <TextReveal>We design infrastructure</TextReveal><br />
                             <span className="text-zinc-600 italic">not features</span>
-                        </p>
+                        </div>
                         <p className="text-lg text-zinc-400 font-light leading-relaxed">
                             Our work spans AI, software, and growth infrastructure, always focused on long-term reliability rather than short-term wins.
                         </p>
-                    </motion.div>
+                    </ScrollReveal>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0 }}
-                    >
-                        <AISystemCard />
-                    </motion.div>
+                <ScrollReveal staggerChildren={0.15} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <AISystemCard />
+                    <SoftwareSystemCard />
+                    <GrowthSystemCard />
+                </ScrollReveal>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                    >
-                        <SoftwareSystemCard />
-                    </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <GrowthSystemCard />
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8"
-                >
+                <ScrollReveal delay={0.5} className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
                     <p className="text-zinc-500 text-sm font-light max-w-lg italic">
                         "Airya is built on the belief that good systems compound quietly over time."
                     </p>
@@ -301,7 +275,7 @@ export function UnifiedSystemsSection() {
                         View Full Services
                         <ArrowRight className="size-4 group-hover:translate-x-2 transition-transform" />
                     </motion.a>
-                </motion.div>
+                </ScrollReveal>
             </div>
         </section>
     )

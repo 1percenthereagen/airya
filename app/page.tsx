@@ -9,6 +9,7 @@ import { ROICalculatorSection } from "@/components/roi-calculator-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { BlogPreviewSection } from "@/components/blog-preview-section"
+import { FAQSection } from "@/components/premium-solutions-section"
 import { getLatestBlogs } from "@/lib/blog"
 
 // Enable ISR for blog data

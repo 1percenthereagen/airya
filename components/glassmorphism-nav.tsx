@@ -7,8 +7,8 @@ import Link from "next/link"
 
 const navigation = [
   { name: "About", href: "/about" },
-  { name: "Capabilities", href: "/#capabilities" },
-  { name: "Features", href: "/#features" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Services", href: "/services" },
   { name: "Insights", href: "/blog" },
 ]
@@ -70,104 +70,88 @@ export function GlassmorphismNav() {
   return (
     <>
       <nav
-        className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-20 md:-translate-y-24 opacity-0"
+        className={`fixed top-6 left-0 right-0 z-50 transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0"
           } ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-        style={{
-          transition: hasLoaded ? "all 0.5s ease-out" : "opacity 0.8s ease-out, transform 0.8s ease-out",
-        }}
       >
-        {/* Main Navigation */}
-        <div className="w-[95vw] md:w-[90vw] max-w-xs md:max-w-5xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-2 md:px-6 md:py-2">
-            <div className="flex items-center justify-between">
-              {/* Logo */}
-              <Link
-                href="/"
-                className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Airya"
-                    width={88}
-                    height={88}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </Link>
-
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-white/80 hover:text-white hover:scale-105 transition-all duration-200 font-medium cursor-pointer"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+        <div className="w-full max-w-[95vw] md:max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between h-24">
+            {/* Left: Logo */}
+            <Link
+              href="/"
+              className="relative z-50 flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
+            >
+              <div className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center -ml-4">
+                <Image
+                  src="/images/logo.png"
+                  alt="Airya"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-contain"
+                  priority
+                />
               </div>
+            </Link>
 
-              {/* Desktop CTA Button */}
+            {/* Center: Floating Capsule Menu (Desktop) */}
+            <div className="hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="bg-[#050505]/80 backdrop-blur-xl border border-white/[0.08] rounded-full px-10 py-4 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] ring-1 ring-white/[0.03]">
+                <div className="flex items-center space-x-10">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-200 tracking-wide"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: CTA & Mobile Toggle */}
+            <div className="flex items-center gap-4 relative z-50">
+              {/* Desktop CTA */}
               <div className="hidden md:block">
                 <Link
                   href="/contact"
-                  className="relative bg-white hover:bg-gray-50 text-black font-medium px-6 py-2 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
+                  className="group relative inline-flex items-center gap-2 bg-white text-black px-7 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"
                 >
-                  <span className="mr-2">Get Started</span>
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  <span>Let's Chat!</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer"
+                className="md:hidden flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/10 backdrop-blur-md text-white transition-transform active:scale-95"
               >
-                <div className="relative w-6 h-6">
-                  <Menu
-                    size={24}
-                    className={`absolute inset-0 transition-all duration-300 ${isOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
-                      }`}
-                  />
-                  <X
-                    size={24}
-                    className={`absolute inset-0 transition-all duration-300 ${isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-180 scale-75"
-                      }`}
-                  />
-                </div>
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
         </div>
 
-        <div className="md:hidden relative">
-          {/* Backdrop overlay */}
+        {/* Mobile Menu Overlay */}
+        <div className="md:hidden">
+          {/* Backdrop */}
           <div
-            className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
+            className={`fixed inset-0 bg-black/60 backdrop-blur-xl transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
             onClick={() => setIsOpen(false)}
-            style={{ top: "0", left: "0", right: "0", bottom: "0", zIndex: -1 }}
           />
 
-          {/* Menu container */}
-          <div
-            className={`mt-2 w-[90vw] max-w-xs mx-auto transition-all duration-500 ease-out transform-gpu ${isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
-              }`}
-          >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-2xl">
+          {/* Menu Content */}
+          <div className={`absolute top-full left-0 right-0 p-4 transition-all duration-500 transform ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"}`}>
+            <div className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-4 shadow-2xl overflow-hidden">
               <div className="flex flex-col space-y-1">
                 {navigation.map((item, index) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-3 py-3 text-left transition-all duration-300 font-medium cursor-pointer transform hover:scale-[1.02] hover:translate-x-1 ${isOpen ? "animate-mobile-menu-item" : ""
-                      }`}
-                    style={{
-                      animationDelay: isOpen ? `${index * 80 + 100}ms` : "0ms",
-                    }}
                     onClick={() => setIsOpen(false)}
+                    className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200"
+                    style={{ transitionDelay: `${index * 50}ms` }}
                   >
                     {item.name}
                   </Link>
@@ -175,15 +159,11 @@ export function GlassmorphismNav() {
                 <div className="h-px bg-white/10 my-2" />
                 <Link
                   href="/contact"
-                  className={`relative bg-white hover:bg-gray-50 text-black font-medium px-6 py-3 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group transform ${isOpen ? "animate-mobile-menu-item" : ""
-                    }`}
-                  style={{
-                    animationDelay: isOpen ? `${navigation.length * 80 + 150}ms` : "0ms",
-                  }}
                   onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between px-4 py-3 bg-white text-black rounded-xl font-medium"
                 >
-                  <span className="mr-2">Get Started</span>
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  <span>Let's Chat!</span>
+                  <ArrowRight size={18} />
                 </Link>
               </div>
             </div>

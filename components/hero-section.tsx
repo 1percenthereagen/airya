@@ -2,13 +2,12 @@
 
 import { useRef } from "react"
 import Link from "next/link"
-import { motion, useInView } from "framer-motion"
+import { TextReveal } from "./text-reveal"
+import { ScrollReveal } from "./scroll-reveal"
 import { InteractiveTorus } from "./interactive-torus"
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null)
-  const headingRef = useRef<HTMLHeadingElement | null>(null)
-  const textInView = useInView(headingRef, { once: true, margin: "-10%" })
 
   return (
     <section ref={sectionRef} className="relative min-h-screen w-full flex items-center overflow-hidden bg-black text-white px-6 md:px-12 lg:px-24">
@@ -18,42 +17,42 @@ export function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 pt-36 pb-12 md:pb-0 md:pt-20">
         {/* Right Column - 3D Element (Appears first on mobile) */}
         <div className="flex-1 w-full lg:w-1/2 flex items-center justify-center lg:justify-end relative z-10 order-1 lg:order-2 mb-8 md:mb-0">
-          {/* Mobile size reduced to 280px to prevent cropping and overlap */}
-          <div className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] lg:-mr-10">
+          <ScrollReveal delay={0.4} className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] lg:-mr-10">
             <InteractiveTorus />
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Left Column - Text Content (Appears second on mobile) */}
         <div className="flex-1 w-full lg:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-20 order-2 lg:order-1">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: textInView ? 1 : 0, x: textInView ? 0 : -30 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6 md:space-y-6"
-          >
+          <div className="space-y-6 md:space-y-6">
             <h1
-              ref={headingRef}
-              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white leading-[1.1]"
+              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white leading-[1.1] flex flex-col items-center md:items-start"
             >
-              Software.
-              <br />
-              Systems.
-              <br />
-              Growth.
+              <TextReveal>Software.</TextReveal>
+              <TextReveal delay={0.1}>Systems.</TextReveal>
+              <TextReveal delay={0.2}>Growth.</TextReveal>
             </h1>
 
-            <motion.p
-              className="text-base md:text-xl text-gray-400 font-light tracking-wide max-w-xs md:max-w-lg mx-auto md:mx-0 opacity-80"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: textInView ? 0.8 : 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              We design and build products, platforms, and marketing systems that scale with structure and clarity.
-            </motion.p>
-          </motion.div>
+            <ScrollReveal delay={0.3}>
+              <p className="text-base md:text-xl text-gray-400 font-light tracking-wide max-w-xs md:max-w-lg mx-auto md:mx-0 opacity-80">
+                We design and build products, platforms, and marketing systems that scale with structure and clarity.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                <Link href="/contact" className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors">
+                  Get Started
+                </Link>
+                <Link href="/blog" className="px-8 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-colors">
+                  Our Thinking
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
   )
 }
+
