@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { getBlogBySlug, getBlogContent } from "@/lib/blog"
 import type { Metadata } from "next"
 import styles from "./blog-content.module.css"
+import sanitizeHtml from "sanitize-html"
 
 // Revalidate every 60 seconds
 export const revalidate = 60
@@ -109,7 +110,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ post_
                     {/* Content */}
                     <div
                         className={styles.blogContent}
-                        dangerouslySetInnerHTML={{ __html: content }}
+                        dangerouslySetInnerHTML={{
+                            __html: sanitizeHtml(content, {
+                                allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'hr', 'ul', 'ol', 'li', 'strong', 'em', 'u', 's', 'a', 'img', 'blockquote', 'code', 'pre'],
+                                allowedAttributes: {
+                                    'a': ['href', 'title', 'target'],
+                                    'img': ['src', 'alt', 'title', 'width', 'height']
+                                }
+                            })
+                        }}
                     />
 
                 </article>
