@@ -126,13 +126,22 @@ export function AboutContent() {
                         delay={0.1}
                     />
 
+                    {/* Ritwik */}
+                    <TeamMember
+                        name="Ritwik Yadav"
+                        role="Co-Founder"
+                        bio="Ritwik handles performance marketing, SEO, content strategy, analytics, and funnel optimization. His focus is on sustainable growth systems rather than short-term spikes, building campaigns that compound over time."
+                        linkedIn="https://www.linkedin.com/in/ritwik-yadav/"
+                        delay={0.2}
+                    />
+
                     {/* Abhishek */}
                     <TeamMember
                         name="Abhishek Mishra"
                         role="Software Engineer"
                         bio="Abhishek builds Android and iOS applications with a focus on mobile performance, scalability, and production-grade engineering. Previously at Zomato, he brings experience from high-traffic consumer platforms to every project."
                         linkedIn="https://www.linkedin.com/in/mishra5047/"
-                        delay={0.2}
+                        delay={0.3}
                     />
 
                     {/* Nandini */}
@@ -141,17 +150,9 @@ export function AboutContent() {
                         role="SaaS · AI · Web Applications"
                         bio="Nandini works on SaaS platforms, AI systems, and full-stack web applications. She focuses on building scalable and redundant digital products that bridge the gap between complex engineering and intuitive user experiences."
                         linkedIn="https://www.linkedin.com/in/nandinigoyal1999/"
-                        delay={0.3}
-                    />
-
-                    {/* Ritwik */}
-                    <TeamMember
-                        name="Ritwik Yadav"
-                        role="Digital Marketer · Vancouver"
-                        bio="Ritwik handles performance marketing, SEO, content strategy, analytics, and funnel optimization. His focus is on sustainable growth systems rather than short-term spikes, building campaigns that compound over time."
-                        linkedIn="https://www.linkedin.com/in/ritwik-yadav/"
                         delay={0.4}
                     />
+
 
                     {/* Param */}
                     <TeamMember
@@ -159,7 +160,7 @@ export function AboutContent() {
                         role="Growth Marketer · Jaipur"
                         bio="Param works on growth strategy, user acquisition, conversion optimization, and experimentation. He brings a strong understanding of early-stage scaling and marketing systems that drive measurable outcomes."
                         linkedIn="https://www.linkedin.com/in/param-sharma/"
-                        delay={0.5}
+                        delay={0.6}
                     />
 
                     {/* Prince */}
@@ -168,7 +169,7 @@ export function AboutContent() {
                         role="Social Media and PR Manager"
                         bio="Prince manages social media strategies and public relations. With experience at top media houses in India, he builds brand narratives that resonate and scale across digital channels."
                         linkedIn="https://www.linkedin.com/in/princedadhich/"
-                        delay={0.6}
+                        delay={0.7}
                     />
                 </div>
 

@@ -2,7 +2,6 @@
 import type React from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -34,15 +33,6 @@ const footerLinks: FooterSection[] = [
       { title: "Services", href: "/services" },
       { title: "Insights", href: "/blog" },
       { title: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    label: "Social",
-    links: [
-      { title: "Facebook", href: "#", icon: FacebookIcon },
-      { title: "Instagram", href: "#", icon: InstagramIcon },
-      { title: "Youtube", href: "#", icon: YoutubeIcon },
-      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
     ],
   },
 ]
@@ -84,38 +74,7 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-            {/* Social - visible only on sm+ in the same row */}
-            <div className="hidden sm:flex flex-col items-center text-center space-y-3">
-              <h3 className="text-xs md:text-sm font-medium text-white/40 tracking-widest uppercase">{footerLinks[2].label}</h3>
-              <ul className="space-y-2 md:space-y-3">
-                {footerLinks[2].links.map((link) => (
-                  <li key={link.title}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200 font-light py-1 inline-block"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          {/* Social - centered below on mobile only */}
-          <div className="sm:hidden flex flex-col items-center text-center space-y-3 mt-8">
-            <h3 className="text-xs font-medium text-white/40 tracking-widest uppercase">{footerLinks[2].label}</h3>
-            <ul className="space-y-2">
-              {footerLinks[2].links.map((link) => (
-                <li key={link.title}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors duration-200 font-light py-1 inline-block"
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Social removed */}
           </div>
         </div>
 

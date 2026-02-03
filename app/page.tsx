@@ -1,5 +1,6 @@
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { HeroSection } from "@/components/hero-section"
+import { WhatWeDoSection } from "@/components/what-we-do-section"
 import { ProblemSolutionSection } from "@/components/problem-solution-section"
 import Aurora from "@/components/Aurora"
 import { FeaturesSection } from "@/components/features-section"
@@ -28,7 +29,7 @@ export default async function HomePage() {
         <div className="relative z-10">
           <GlassmorphismNav />
           <HeroSection />
-          <UnifiedSystemsSection />
+          <WhatWeDoSection />
           <FeaturesSection />
           <ProblemSolutionSection />
           <TestimonialsSection />

@@ -159,6 +159,13 @@ export function PricingSection() {
                     items: ["iOS, Android & Web frontend", "Pixel-perfect UI from Figma", "API & third-party integrations", "Smooth animations & transitions"]
                 },
                 {
+                    tag: "UI ONLY",
+                    title: "Mobile App Frontend",
+                    price: "$999 USD",
+                    description: "High-quality, pixel-perfect mobile app UI implementation.",
+                    items: ["React Native / Flutter UI", "Responsive layouts", "Smooth animations", "Component library setup"]
+                },
+                {
                     tag: "RECOMMENDED",
                     title: "MVP Development",
                     price: "$2,499 USD",
@@ -171,6 +178,38 @@ export function PricingSection() {
                     price: "$4,499 USD",
                     description: "Best for production-grade platforms.",
                     items: ["Multi-app ecosystem + admin panel", "Scalable backend architecture", "Performance, security & load testing", "2–4 month expert delivery"]
+                }
+            ]
+        },
+        {
+            name: "E-commerce",
+            icon: "🛍️",
+            label: "E-commerce & Shopify",
+            description: "Custom Shopify and e-commerce solutions built for growing businesses that need reliability, performance, and flexibility.",
+            services: [
+                {
+                    tag: "SETUP",
+                    title: "Shopify Store Setup",
+                    price: "$1,800 USD",
+                    description: "For small businesses launching a clean and functional Shopify store.",
+                    items: ["Shopify store setup", "Theme customization", "Product and collection setup", "Payment, shipping, and tax configuration", "Mobile-optimized layout"],
+                    ctaText: "Discuss Scope"
+                },
+                {
+                    tag: "CUSTOM",
+                    title: "Custom Shopify Development",
+                    price: "$3,500 USD",
+                    description: "For brands that need customization, integrations, and better performance.",
+                    items: ["Advanced theme customization", "Custom sections and templates", "App integrations", "Basic automation workflows", "Performance optimization"],
+                    ctaText: "Discuss Scope"
+                },
+                {
+                    tag: "SCALING",
+                    title: "Advanced E-commerce Systems",
+                    price: "$6,500 USD",
+                    description: "For growing brands that need automation and scalable e-commerce workflows.",
+                    items: ["Custom Shopify logic", "Order and inventory automation", "CRM or third-party integrations", "Conversion optimization"],
+                    ctaText: "Request a Quote"
                 }
             ]
         },

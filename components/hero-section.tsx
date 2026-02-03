@@ -4,6 +4,7 @@ import { useRef } from "react"
 import Link from "next/link"
 import { TextReveal } from "./text-reveal"
 import { ScrollReveal } from "./scroll-reveal"
+import { Magnetic } from "./magnetic"
 import { InteractiveTorus } from "./interactive-torus"
 
 export function HeroSection() {
@@ -41,12 +42,16 @@ export function HeroSection() {
 
             <ScrollReveal delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                <Link href="/contact" className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors">
-                  Get Started
-                </Link>
-                <Link href="/blog" className="px-8 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-colors">
-                  Our Thinking
-                </Link>
+                <Magnetic>
+                  <Link href="/contact" className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors inline-block">
+                    Get Started
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link href="/blog" className="px-8 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-colors inline-block">
+                    Our Thinking
+                  </Link>
+                </Magnetic>
               </div>
             </ScrollReveal>
           </div>

@@ -4,7 +4,7 @@ import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
 import { Bot, Activity, Smartphone, Layout, ArrowRight, TrendingUp, Users, Code2, Database } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 // --- Helper Components ---
 
@@ -39,12 +39,16 @@ const FloatingContainer = ({ children, delay = 0 }: { children: React.ReactNode,
 
 // --- Demo: AI Agent System (Monochromatic) ---
 const AIDemo = () => {
+    const hasRun = useRef(false)
     const [messages, setMessages] = useState([
         { id: 1, type: 'bot', text: 'Operational. Identifying customer needs...' },
         { id: 2, type: 'wait', text: '...' }
     ])
 
     useEffect(() => {
+        if (hasRun.current) return
+        hasRun.current = true
+
         const sequence = async () => {
             await new Promise(r => setTimeout(r, 2000))
             setMessages(prev => prev.map(m => m.type === 'wait' ? { id: 3, type: 'user', text: 'What is the current system load?' } : m))

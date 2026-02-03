@@ -59,98 +59,13 @@ export default function PortfolioPage() {
                         <div className="max-w-5xl mx-auto text-center relative z-10">
                             <ScrollReveal>
                                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
-                                    We have delivered <span className="text-white/60">Mobile Applications (Android & iOS)</span>, <span className="text-white/60">AI Agents</span>, <span className="text-white/60">SEO Solutions</span>, and <span className="text-white/60">Custom Software</span> to many of our clients globally.
+                                    We have delivered solutions for <span className="text-white/60">Mobile</span>, <span className="text-white/60">AI</span>, <span className="text-white/60">Web</span>, and <span className="text-white/60">Enterprise Systems</span> globally.
                                 </h2>
                             </ScrollReveal>
                         </div>
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)]" />
                     </section>
 
-                    {/* Experience That Speaks for Itself Section */}
-                    <section className="relative py-32 px-6">
-                        <div className="max-w-7xl mx-auto">
-                            {/* Section Header */}
-                            <ScrollReveal>
-                                <div className="text-center mb-20">
-                                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                                        <TextReveal>Our Team&apos;s Past Experience</TextReveal>
-                                    </h2>
-                                    <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-                                        Our team brings a wealth of <span className="text-white">past experience</span> having worked with and delivered solutions for leading brands across industries like <span className="text-white">News & Media</span>, <span className="text-white">eCommerce</span>, <span className="text-white">Service Businesses</span>, and <span className="text-white">Global Agencies</span>.
-                                    </p>
-                                </div>
-                            </ScrollReveal>
-
-                            <ScrollReveal delay={0.2}>
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-                                    {/* Amazon Logo */}
-                                    <div className="relative group">
-                                        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center h-32">
-                                            <div className="relative w-full h-full max-w-[160px] max-h-[60px] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                                                <Image
-                                                    src="/images/portfolio/amazon-logo.png"
-                                                    alt="Amazon"
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Zomato Logo */}
-                                    <div className="relative group">
-                                        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center h-32">
-                                            <div className="relative w-full h-full max-w-[160px] max-h-[60px] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                                                <Image
-                                                    src="/images/portfolio/zomato-logo.png"
-                                                    alt="Zomato"
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Beem Logo */}
-                                    <div className="relative group">
-                                        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center h-32">
-                                            <div className="relative w-full h-full max-w-[160px] max-h-[60px] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                                                <Image
-                                                    src="/images/portfolio/beem-logo.png"
-                                                    alt="Beem"
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Celebal Technologies Logo */}
-                                    <div className="relative group">
-                                        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center h-32">
-                                            <div className="relative w-full h-full max-w-[160px] max-h-[60px] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                                                <Image
-                                                    src="/images/portfolio/celeballogo.png"
-                                                    alt="Celebal Technologies"
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ScrollReveal>
-
-                            {/* Disclaimer */}
-                            <ScrollReveal delay={0.4}>
-                                <div className="text-center">
-                                    <p className="text-sm text-gray-500 italic max-w-3xl mx-auto">
-                                        Team experience includes full-time roles, project-based work, and professional collaborations.
-                                    </p>
-                                </div>
-                            </ScrollReveal>
-                        </div>
-                    </section>
 
                     {/* Team & Developers Section */}
                     <section className="relative py-24 px-6">
