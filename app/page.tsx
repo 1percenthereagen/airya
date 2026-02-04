@@ -13,6 +13,8 @@ import { BlogPreviewSection } from "@/components/blog-preview-section"
 import { FAQSection } from "@/components/premium-solutions-section"
 import { getLatestBlogs } from "@/lib/blog"
 
+import { AiSystemsSection } from "@/components/ai-systems-section"
+
 // Enable ISR for blog data
 export const revalidate = 60
 
@@ -30,7 +32,8 @@ export default async function HomePage() {
           <GlassmorphismNav />
           <HeroSection />
           <WhatWeDoSection />
-          <FeaturesSection />
+          <AiSystemsSection />
+
           <ProblemSolutionSection />
           <TestimonialsSection />
           <BlogPreviewSection posts={latestPosts} />

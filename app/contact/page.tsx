@@ -5,6 +5,77 @@ import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { useEffect, useState, Suspense } from "react"
+
+function ContactForm() {
+    const searchParams = useSearchParams()
+    const [message, setMessage] = useState("")
+
+    useEffect(() => {
+        const plan = searchParams.get("plan")
+        const price = searchParams.get("price")
+
+        if (plan) {
+            // Pre-fill logic based on URL params
+            let initialMessage = `Hi, I'm interested in the ${plan}`
+            if (price) initialMessage += ` (${price})`
+            initialMessage += ".\n\nI'd like to discuss how we can implement this for my business."
+
+            setMessage(initialMessage)
+        }
+    }, [searchParams])
+
+    return (
+        <form className="space-y-8">
+            <div className="space-y-6">
+                <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-gray-400 ml-1">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light"
+                        placeholder="Your name"
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-gray-400 ml-1">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light"
+                        placeholder="name@company.com"
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-gray-400 ml-1">Message</label>
+                    <textarea
+                        id="message"
+                        rows={5}
+                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light resize-none"
+                        placeholder="Tell us about the system you want to build..."
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            <Button
+                size="lg"
+                className="w-full bg-white text-black hover:bg-gray-200 rounded-xl py-6 text-base font-medium transition-transform active:scale-[0.98]"
+            >
+                Start the conversation
+                <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+
+            <p className="text-center text-xs text-gray-600">
+                Typically responds within 24 hours.
+            </p>
+        </form>
+    )
+}
 
 export default function ContactPage() {
     return (
@@ -56,51 +127,9 @@ export default function ContactPage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="bg-zinc-900/30 rounded-3xl p-8 md:p-12 border border-white/5 backdrop-blur-sm"
                     >
-                        <form className="space-y-8">
-                            <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-gray-400 ml-1">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light"
-                                        placeholder="Your name"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-gray-400 ml-1">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light"
-                                        placeholder="name@company.com"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label htmlFor="message" className="text-sm font-medium text-gray-400 ml-1">Message</label>
-                                    <textarea
-                                        id="message"
-                                        rows={5}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-gray-700 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all font-light resize-none"
-                                        placeholder="Tell us about the system you want to build..."
-                                    />
-                                </div>
-                            </div>
-
-                            <Button
-                                size="lg"
-                                className="w-full bg-white text-black hover:bg-gray-200 rounded-xl py-6 text-base font-medium transition-transform active:scale-[0.98]"
-                            >
-                                Start the conversation
-                                <ArrowRight className="ml-2 w-4 h-4" />
-                            </Button>
-
-                            <p className="text-center text-xs text-gray-600">
-                                Typically responds within 24 hours.
-                            </p>
-                        </form>
+                        <Suspense fallback={<div className="text-white/50">Loading form...</div>}>
+                            <ContactForm />
+                        </Suspense>
                     </motion.div>
 
                 </div>

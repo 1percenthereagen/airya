@@ -135,14 +135,6 @@ export function AboutContent() {
                         delay={0.2}
                     />
 
-                    {/* Abhishek */}
-                    <TeamMember
-                        name="Abhishek Mishra"
-                        role="Software Engineer"
-                        bio="Abhishek builds Android and iOS applications with a focus on mobile performance, scalability, and production-grade engineering. Previously at Zomato, he brings experience from high-traffic consumer platforms to every project."
-                        linkedIn="https://www.linkedin.com/in/mishra5047/"
-                        delay={0.3}
-                    />
 
                     {/* Nandini */}
                     <TeamMember
@@ -160,6 +152,7 @@ export function AboutContent() {
                         role="Growth Marketer · Jaipur"
                         bio="Param works on growth strategy, user acquisition, conversion optimization, and experimentation. He brings a strong understanding of early-stage scaling and marketing systems that drive measurable outcomes."
                         linkedIn="https://www.linkedin.com/in/param-sharma/"
+                        instagram="https://www.instagram.com/theflinstonesguy/"
                         delay={0.6}
                     />
 
@@ -202,7 +195,7 @@ export function AboutContent() {
     )
 }
 
-function TeamMember({ name, role, bio, linkedIn, delay }: { name: string, role: string, bio: string, linkedIn: string, delay: number }) {
+function TeamMember({ name, role, bio, linkedIn, instagram, delay }: { name: string, role: string, bio: string, linkedIn: string, instagram?: string, delay: number }) {
     return (
         <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -216,13 +209,24 @@ function TeamMember({ name, role, bio, linkedIn, delay }: { name: string, role: 
             <p className="text-gray-400 leading-relaxed mb-4">
                 {bio}
             </p>
-            <Link
-                href={linkedIn}
-                target="_blank"
-                className="text-sm text-gray-500 hover:text-white transition-colors"
-            >
-                LinkedIn →
-            </Link>
+            <div className="flex gap-4">
+                <Link
+                    href={linkedIn}
+                    target="_blank"
+                    className="text-sm text-gray-500 hover:text-white transition-colors"
+                >
+                    LinkedIn →
+                </Link>
+                {instagram && (
+                    <Link
+                        href={instagram}
+                        target="_blank"
+                        className="text-sm text-gray-500 hover:text-white transition-colors"
+                    >
+                        Instagram →
+                    </Link>
+                )}
+            </div>
         </motion.div>
     )
 }

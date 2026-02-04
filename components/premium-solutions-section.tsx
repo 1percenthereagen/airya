@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { ScrollReveal } from "./scroll-reveal"
 import { TextReveal } from "./text-reveal"
 import { Plus, Minus, Check } from "lucide-react"
@@ -19,6 +20,20 @@ interface CardProps {
 
 export const RedesignedMetallicCard = ({ tag, title, description, price, items, ctaText, isExpanded, onClick, type = "info" }: CardProps) => {
     const [isMobile, setIsMobile] = useState(false)
+    const router = useRouter()
+
+    const handleCardClick = () => {
+        if (onClick) {
+            onClick()
+        } else if (type === "pricing" && ctaText) {
+            const queryParams = new URLSearchParams({
+                plan: title,
+                price: price || "",
+                context: "pricing_card"
+            }).toString()
+            router.push(`/contact?${queryParams}`)
+        }
+    }
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -30,7 +45,7 @@ export const RedesignedMetallicCard = ({ tag, title, description, price, items, 
     return (
         <div
             className="group relative h-full w-full cursor-pointer flex flex-col items-center justify-center p-4 min-h-[600px]"
-            onClick={onClick}
+            onClick={handleCardClick}
         >
             {/* The Outer Glow Backdrop */}
             <div className={`absolute inset-4 bg-white/[0.03] ${isMobile ? 'blur-[40px]' : 'blur-[120px]'} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
