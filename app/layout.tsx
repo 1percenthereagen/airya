@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   description:
     "We design scalable AI systems, software architecture, and growth engines for modern enterprises. No tools, just systems that work without you.",
   keywords: ["AI Automation", "Software Architecture", "Growth Systems", "Enterprise AI", "Airya"],
+  icons: {
+    icon: "/images/faviconlogo.png",
+  },
 }
 
 export default function RootLayout({
