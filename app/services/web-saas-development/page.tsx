@@ -41,10 +41,13 @@ export default function WebSaasDevelopmentPage() {
             <WebShowcase />
 
             {/* Services List */}
-            <section className="py-24 px-6 bg-black relative">
-                <div className="max-w-7xl mx-auto">
+            <section className="py-24 px-6 bg-black relative overflow-hidden">
+                {/* Subtle Background Gradient match Landing Page */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black z-0 pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-sans">Custom Web Development for Modern Businesses</h2>
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tighter text-white mb-6">Custom Web Development for Modern Businesses</h2>
                         <p className="text-gray-400 max-w-2xl mx-auto font-mono text-sm leading-relaxed">
                             We build custom web solutions tailored to business requirements, not generic templates.
                         </p>
@@ -58,8 +61,8 @@ export default function WebSaasDevelopmentPage() {
                             "API-Driven & Integrated Apps",
                             "Performance-Focused & SEO-Ready"
                         ].map((service, i) => (
-                            <GlassCard key={i} className="p-6 flex items-center justify-center text-center">
-                                <span className="text-gray-300 font-medium">{service}</span>
+                            <GlassCard key={i} className="p-6 flex items-center justify-center text-center hover:bg-white/[0.05] transition-colors border-white/5">
+                                <span className="text-gray-300 font-light tracking-wide">{service}</span>
                             </GlassCard>
                         ))}
                     </div>
@@ -67,11 +70,11 @@ export default function WebSaasDevelopmentPage() {
             </section>
 
             {/* Problems Solved */}
-            <section className="py-24 px-6 bg-zinc-900/10">
+            <section className="py-24 px-6 bg-zinc-900/10 relative">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div>
                         <h3 className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-4">The Challenge</h3>
-                        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">Many businesses struggle with...</h2>
+                        <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-white mb-6 leading-tight">Many businesses struggle with...</h2>
                         <div className="space-y-6">
                             {[
                                 "Slow or poorly optimized websites",
@@ -83,15 +86,15 @@ export default function WebSaasDevelopmentPage() {
                                     <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
                                         <span className="text-gray-500 text-xs">✕</span>
                                     </div>
-                                    <p className="text-gray-400 text-lg leading-relaxed">{problem}</p>
+                                    <p className="text-gray-400 text-lg leading-relaxed font-light">{problem}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className="bg-gradient-to-br from-white/5 to-transparent p-1 rounded-3xl">
+                    <div className="bg-gradient-to-br from-white/10 to-transparent p-1 rounded-3xl">
                         <div className="bg-black/80 backdrop-blur-xl p-8 rounded-[22px] border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-4">The Solution</h3>
-                            <p className="text-gray-400 leading-relaxed mb-6">
+                            <h3 className="text-2xl font-light tracking-tight text-white mb-4">The Solution</h3>
+                            <p className="text-gray-400 leading-relaxed mb-6 font-light">
                                 We solve these by building structured web solutions that are flexible, fast, and easy to evolve.
                             </p>
                             <div className="flex items-center gap-2 text-white font-mono text-sm">
@@ -104,9 +107,9 @@ export default function WebSaasDevelopmentPage() {
             </section>
 
             {/* What We Build */}
-            <section className="py-24 px-6 bg-black">
+            <section className="py-24 px-6 bg-black relative">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-4xl font-bold mb-16 text-center text-white">What We Build</h2>
+                    <h2 className="text-4xl md:text-6xl font-light tracking-tighter mb-16 text-center text-white">What We Build</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             { title: "Business & Marketing Sites", icon: Globe, desc: "High-conversion websites that tell your brand story." },
@@ -115,19 +118,18 @@ export default function WebSaasDevelopmentPage() {
                             { title: "AI-Powered Apps", icon: Zap, desc: "Integrating intelligent features into web interfaces." },
                             { title: "CRM Integrations", icon: Server, desc: "Connecting your website to your sales pipeline." }
                         ].map((item, i) => (
-                            <GlassCard key={i} className="p-8 group hover:bg-white/[0.03] transition-colors">
+                            <GlassCard key={i} className="p-8 group hover:bg-white/[0.04] transition-colors border-white/10">
                                 <div className="flex justify-between items-start mb-6">
                                     <item.icon className="w-8 h-8 text-gray-200" />
                                     <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-white transition-colors" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-4 text-white">{item.title}</h3>
-                                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                                <h3 className="text-xl font-medium mb-4 text-white tracking-tight">{item.title}</h3>
+                                <p className="text-gray-400 leading-relaxed font-light">{item.desc}</p>
                             </GlassCard>
                         ))}
                     </div>
                 </div>
             </section>
-
             {/* Process */}
             <ProcessTimeline steps={processSteps} />
 

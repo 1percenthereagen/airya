@@ -72,7 +72,7 @@ const RealSaasDashboard = () => (
                                 <span className="text-gray-500">{stat.label}</span>
                                 <span className={`text-[10px] px-1.5 py-0.5 rounded ${i === 2 ? 'bg-gray-800 text-gray-300' : 'bg-green-500/10 text-green-400'}`}>{stat.delta}</span>
                             </div>
-                            <div className="text-xl font-medium text-white">{stat.stat?.value || stat.value}</div>
+                            <div className="text-xl font-medium text-white">{stat.value}</div>
                         </div>
                     ))}
                 </div>
@@ -133,7 +133,7 @@ export function WebShowcase() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[1.1] mb-6"
+                        className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-white leading-[1.1] mb-6"
                     >
                         Build Scalable, <br />
                         High-Performance <br />
@@ -188,12 +188,12 @@ export function WebShowcase() {
                 </div>
 
                 {/* Right Content: 3D Browser Window */}
-                <div className="relative h-[650px] w-full hidden lg:flex items-center justify-center perspective-1000">
+                <div className="relative h-[400px] lg:h-[650px] w-full flex items-center justify-center perspective-1000 mt-12 lg:mt-0 lg:order-last order-first">
                     <motion.div
                         initial={{ opacity: 0, rotateY: -12, rotateX: 5, scale: 0.9 }}
                         animate={{ opacity: 1, rotateY: -12, rotateX: 5, scale: 1 }}
                         transition={{ duration: 1.2, delay: 0.2, ease: "circOut" }}
-                        className="w-full max-w-2xl aspect-[16/10] relative z-20 group"
+                        className="w-full max-w-2xl aspect-[16/10] relative z-20 group scale-90 lg:scale-100 origin-center"
                     >
                         <BrowserWindow className="h-full w-full bg-[#050505] border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
                             <RealSaasDashboard />
@@ -204,14 +204,14 @@ export function WebShowcase() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.8 }}
-                            className="absolute -left-8 top-1/4 bg-[#0a0a0a] border border-white/10 p-3 rounded-lg shadow-2xl flex items-center gap-3 backdrop-blur-md"
+                            className="absolute -left-4 lg:-left-8 top-1/4 bg-[#0a0a0a] border border-white/10 p-2 lg:p-3 rounded-lg shadow-2xl flex items-center gap-3 backdrop-blur-md"
                         >
-                            <div className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center border border-white/5">
-                                <span className="text-white font-mono text-xs font-bold">100</span>
+                            <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-md bg-white/5 flex items-center justify-center border border-white/5">
+                                <span className="text-white font-mono text-[10px] lg:text-xs font-bold">100</span>
                             </div>
                             <div>
-                                <div className="text-[10px] text-gray-500 uppercase font-mono tracking-wider">Lighthouse Score</div>
-                                <div className="text-white font-bold text-xs">Performance</div>
+                                <div className="text-[8px] lg:text-[10px] text-gray-500 uppercase font-mono tracking-wider">Lighthouse Score</div>
+                                <div className="text-white font-bold text-[10px] lg:text-xs">Performance</div>
                             </div>
                         </motion.div>
 
@@ -220,14 +220,14 @@ export function WebShowcase() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 1 }}
-                            className="absolute -right-4 bottom-1/3 bg-[#0a0a0a] border border-white/10 p-3 rounded-lg shadow-2xl flex items-center gap-3 backdrop-blur-md"
+                            className="absolute -right-2 lg:-right-4 bottom-1/3 bg-[#0a0a0a] border border-white/10 p-2 lg:p-3 rounded-lg shadow-2xl flex items-center gap-3 backdrop-blur-md"
                         >
-                            <div className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center border border-white/5 text-gray-300">
-                                <Database className="w-4 h-4" />
+                            <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-md bg-white/5 flex items-center justify-center border border-white/5 text-gray-300">
+                                <Database className="w-3 h-3 lg:w-4 lg:h-4" />
                             </div>
                             <div>
-                                <div className="text-[10px] text-gray-500 uppercase font-mono tracking-wider">Backend</div>
-                                <div className="text-white font-bold text-xs">Next.js Server Actions</div>
+                                <div className="text-[8px] lg:text-[10px] text-gray-500 uppercase font-mono tracking-wider">Backend</div>
+                                <div className="text-white font-bold text-[10px] lg:text-xs">Next.js Actions</div>
                             </div>
                         </motion.div>
                     </motion.div>

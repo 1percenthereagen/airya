@@ -143,15 +143,15 @@ export function MobileShowcase() {
                 </div>
 
                 {/* Right Content: Floating Phones */}
-                <div className="relative h-[800px] w-full hidden lg:block perspective-1000">
+                <div className="relative h-[600px] w-full lg:h-[800px] flex items-center justify-center perspective-1000 order-first lg:order-last mt-12 lg:mt-0">
                     {/* Center Phone (Dashboard) */}
                     <motion.div
-                        initial={{ opacity: 0, y: 100, rotateY: -10 }}
+                        initial={{ opacity: 0, y: 50, rotateY: -10 }}
                         animate={{ opacity: 1, y: 0, rotateY: -10 }}
                         transition={{ duration: 1, delay: 0.2, type: "spring" }}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 scale-75 md:scale-90 lg:scale-100 origin-center"
                     >
-                        <IphoneFrame className="shadow-[0_0_50px_rgba(59,130,246,0.3)]">
+                        <IphoneFrame className="shadow-[0_0_50px_rgba(59,130,246,0.2)]">
                             <DashboardScreen />
                         </IphoneFrame>
 
@@ -160,44 +160,62 @@ export function MobileShowcase() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 1 }}
-                            className="absolute -right-12 top-24 bg-white text-black px-4 py-2 rounded-xl shadow-xl font-bold text-sm flex items-center gap-2 z-30"
+                            className="absolute -right-4 lg:-right-12 top-24 bg-white text-black px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl shadow-xl font-bold text-xs lg:text-sm flex items-center gap-2 z-30"
                         >
-                            <Layers className="w-4 h-4 text-blue-500" />
+                            <Layers className="w-3 h-3 lg:w-4 lg:h-4 text-blue-500" />
                             Auto Layout
                         </motion.div>
                     </motion.div>
 
                     {/* Left Phone (Login) */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50, y: 50, rotateY: 15, scale: 0.9 }}
-                        animate={{ opacity: 1, x: -160, y: 40, rotateY: 15, scale: 0.9 }}
+                        initial={{ opacity: 0, x: -30, y: 30, rotateY: 15, scale: 0.6 }}
+                        animate={{ opacity: 1, x: -100, y: 20, rotateY: 15, scale: 0.65 }}
+                        whileInView={{ x: -140, scale: 0.7 }} // Mobile parallax effect
+                        viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.4, type: "spring" }}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 lg:animate-none"
                     >
-                        <IphoneFrame className="brightness-90">
-                            <LoginScreen />
-                        </IphoneFrame>
+                        <div className="lg:hidden"> {/* Wrapper for mobile specific positioning override if needed */}
+                            <IphoneFrame className="brightness-90 scale-[0.8] lg:scale-100 origin-center">
+                                <LoginScreen />
+                            </IphoneFrame>
+                        </div>
+                        <div className="hidden lg:block">
+                            <IphoneFrame className="brightness-90">
+                                <LoginScreen />
+                            </IphoneFrame>
+                        </div>
                     </motion.div>
 
                     {/* Right Phone (Profile) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50, y: -50, rotateY: -25, scale: 0.9 }}
-                        animate={{ opacity: 1, x: 160, y: -40, rotateY: -25, scale: 0.9 }}
+                        initial={{ opacity: 0, x: 30, y: -30, rotateY: -25, scale: 0.6 }}
+                        animate={{ opacity: 1, x: 100, y: -20, rotateY: -25, scale: 0.65 }}
+                        whileInView={{ x: 140, scale: 0.7 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.6, type: "spring" }}
                         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
                     >
-                        <IphoneFrame className="brightness-90">
-                            <ProfileScreen />
-                        </IphoneFrame>
+                        <div className="lg:hidden">
+                            <IphoneFrame className="brightness-90 scale-[0.8] lg:scale-100 origin-center">
+                                <ProfileScreen />
+                            </IphoneFrame>
+                        </div>
+                        <div className="hidden lg:block">
+                            <IphoneFrame className="brightness-90">
+                                <ProfileScreen />
+                            </IphoneFrame>
+                        </div>
 
                         {/* Floating Badge */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 1.2 }}
-                            className="absolute -left-8 bottom-32 bg-white text-black px-4 py-2 rounded-xl shadow-xl font-bold text-sm flex items-center gap-2 z-30"
+                            className="absolute -left-4 lg:-left-8 bottom-32 bg-white text-black px-3 py-1.5 lg:px-4 lg:py-2 rounded-xl shadow-xl font-bold text-xs lg:text-sm flex items-center gap-2 z-30"
                         >
-                            <Zap className="w-4 h-4 text-yellow-500" />
+                            <Zap className="w-3 h-3 lg:w-4 lg:h-4 text-yellow-500" />
                             Clean Design
                         </motion.div>
                     </motion.div>
